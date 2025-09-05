@@ -1,110 +1,162 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+import { Link } from 'expo-router';   // ✅ added import
 
-import { Collapsible } from '@/components/Collapsible';
-import { ExternalLink } from '@/components/ExternalLink';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-import { IconSymbol } from '@/components/ui/IconSymbol';
+export default function SpotifyLoginScreen() {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-export default function TabTwoScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
-      headerImage={
-        <IconSymbol
-          size={310}
-          color="#808080"
-          name="chevron.left.forwardslash.chevron.right"
-          style={styles.headerImage}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Explore</ThemedText>
-      </ThemedView>
-      <ThemedText>This app includes example code to help you get started.</ThemedText>
-      <Collapsible title="File-based routing">
-        <ThemedText>
-          This app has two screens:{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/explore.tsx</ThemedText>
-        </ThemedText>
-        <ThemedText>
-          The layout file in <ThemedText type="defaultSemiBold">app/(tabs)/_layout.tsx</ThemedText>{' '}
-          sets up the tab navigator.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/router/introduction">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Android, iOS, and web support">
-        <ThemedText>
-          You can open this project on Android, iOS, and the web. To open the web version, press{' '}
-          <ThemedText type="defaultSemiBold">w</ThemedText> in the terminal running this project.
-        </ThemedText>
-      </Collapsible>
-      <Collapsible title="Images">
-        <ThemedText>
-          For static images, you can use the <ThemedText type="defaultSemiBold">@2x</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">@3x</ThemedText> suffixes to provide files for
-          different screen densities
-        </ThemedText>
-        <Image source={require('@/assets/images/react-logo.png')} style={{ alignSelf: 'center' }} />
-        <ExternalLink href="https://reactnative.dev/docs/images">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Custom fonts">
-        <ThemedText>
-          Open <ThemedText type="defaultSemiBold">app/_layout.tsx</ThemedText> to see how to load{' '}
-          <ThemedText style={{ fontFamily: 'SpaceMono' }}>
-            custom fonts such as this one.
-          </ThemedText>
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/versions/latest/sdk/font">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Light and dark mode components">
-        <ThemedText>
-          This template has light and dark mode support. The{' '}
-          <ThemedText type="defaultSemiBold">useColorScheme()</ThemedText> hook lets you inspect
-          what the user&apos;s current color scheme is, and so you can adjust UI colors accordingly.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/develop/user-interface/color-themes/">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Animations">
-        <ThemedText>
-          This template includes an example of an animated component. The{' '}
-          <ThemedText type="defaultSemiBold">components/HelloWave.tsx</ThemedText> component uses
-          the powerful <ThemedText type="defaultSemiBold">react-native-reanimated</ThemedText>{' '}
-          library to create a waving hand animation.
-        </ThemedText>
-        {Platform.select({
-          ios: (
-            <ThemedText>
-              The <ThemedText type="defaultSemiBold">components/ParallaxScrollView.tsx</ThemedText>{' '}
-              component provides a parallax effect for the header image.
-            </ThemedText>
-          ),
-        })}
-      </Collapsible>
-    </ParallaxScrollView>
+    <LinearGradient
+      colors={['#121212', '#000000']}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 1, y: 1 }}
+      style={styles.container}
+    >
+      {/* Logo */}
+      <Image 
+        source={require('@/assets/images/spotifylogo.webp')} 
+        style={styles.logo} 
+      />
+
+      {/* Title */}
+      <Text style={styles.title}>Spotify</Text>
+
+      {/* Inputs */}
+      <TextInput
+        style={styles.input}
+        placeholder="Username"
+        placeholderTextColor="#666"
+        value={username}
+        onChangeText={setUsername}
+      />
+
+      <TextInput
+        style={styles.input}
+        placeholder="Password"
+        placeholderTextColor="#666"
+        secureTextEntry
+        value={password}
+        onChangeText={setPassword}
+      />
+
+      {/* Forgot Password */}
+      <TouchableOpacity style={styles.forgotWrapper}>
+        <Text style={styles.forgotText}>Forgot password?</Text>
+      </TouchableOpacity>
+
+      {/* Sign In Button */}
+      <TouchableOpacity style={styles.signInButton}>
+        <Text style={styles.signInText}>Sign In</Text>
+      </TouchableOpacity>
+
+      {/* Social */}
+      <Text style={styles.socialText}>Be Correct With</Text>
+      <View style={styles.socialContainer}>
+        <TouchableOpacity>
+          <Image 
+            source={require('@/assets/images/fblogo.jpg')} 
+            style={styles.socialIcon} 
+          />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Image 
+            source={require('@/assets/images/googlelogo2.jpg')} 
+            style={styles.socialIcon} 
+          />
+        </TouchableOpacity>
+      </View>
+
+      {/* Sign Up Link */}
+      <Text style={styles.signupText}>
+        Don’t have an account?{" "} 
+        <Link href="/SignUp" style={styles.signupLink}>
+          Sign Up
+        </Link>
+      </Text>
+    </LinearGradient>
   );
 }
 
 const styles = StyleSheet.create({
-  headerImage: {
-    color: '#808080',
-    bottom: -90,
-    left: -35,
-    position: 'absolute',
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 25,
   },
-  titleContainer: {
+  logo: {
+    width: 90,
+    height: 90,
+    marginBottom: 10,
+    resizeMode: 'contain',
+  },
+  title: {
+    fontSize: 32,
+    color: '#fff',
+    fontWeight: 'bold',
+    marginBottom: 40,
+  },
+  input: {
+    width: '100%',
+    height: 50,
+    backgroundColor: '#1E1E1E',
+    borderRadius: 30,
+    paddingHorizontal: 20,
+    fontSize: 16,
+    color: '#fff',
+    marginBottom: 15,
+  },
+  forgotWrapper: {
+    width: '100%',
+    alignItems: 'flex-end',
+    marginBottom: 25,
+  },
+  forgotText: {
+    color: '#888',
+    fontSize: 14,
+  },
+  signInButton: {
+    width: '100%',
+    height: 55,
+    backgroundColor: '#1DB954',
+    borderRadius: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 25,
+    shadowColor: '#1DB954',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.4,
+    shadowRadius: 6,
+    elevation: 6,
+  },
+  signInText: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  socialText: {
+    color: '#1DB954', 
+    marginBottom: 15,
+    fontSize: 15,
+    fontWeight: '600',
+  },
+  socialContainer: {
     flexDirection: 'row',
-    gap: 8,
+    gap: 30,
+    marginBottom: 30,
+  },
+  socialIcon: {
+    width: 42,
+    height: 42,
+    resizeMode: 'contain',
+  },
+  signupText: {
+    color: '#888',
+  },
+  signupLink: {
+    color: '#1DB954',
+    fontWeight: 'bold',
   },
 });
