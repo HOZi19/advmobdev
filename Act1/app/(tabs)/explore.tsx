@@ -1,26 +1,26 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
-import { Link } from 'expo-router';   // ✅ added import
+import React, { useState } from "react";
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
+import { Link, useRouter } from "expo-router";   // ✅ useRouter not router
 
 export default function SpotifyLoginScreen() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const router = useRouter();  // ✅ now valid
 
   return (
     <LinearGradient
-      colors={['#121212', '#000000']}
+      colors={["#121212", "#000000"]}
       start={{ x: 0, y: 0 }}
       end={{ x: 1, y: 1 }}
       style={styles.container}
     >
       {/* Logo */}
       <Image 
-        source={require('@/assets/images/spotifylogo.webp')} 
+        source={require("@/assets/images/spotifylogo.webp")} 
         style={styles.logo} 
       />
 
-      {/* Title */}
       <Text style={styles.title}>Spotify</Text>
 
       {/* Inputs */}
@@ -46,8 +46,11 @@ export default function SpotifyLoginScreen() {
         <Text style={styles.forgotText}>Forgot password?</Text>
       </TouchableOpacity>
 
-      {/* Sign In Button */}
-      <TouchableOpacity style={styles.signInButton}>
+      {/* ✅ Sign In Button (goes to /home/homepage) */}
+      <TouchableOpacity 
+        style={styles.signInButton} 
+        onPress={() => router.push("/(home)/homepage")}
+      >
         <Text style={styles.signInText}>Sign In</Text>
       </TouchableOpacity>
 
@@ -56,13 +59,13 @@ export default function SpotifyLoginScreen() {
       <View style={styles.socialContainer}>
         <TouchableOpacity>
           <Image 
-            source={require('@/assets/images/fblogo.jpg')} 
+            source={require("@/assets/images/fblogo.jpg")} 
             style={styles.socialIcon} 
           />
         </TouchableOpacity>
         <TouchableOpacity>
           <Image 
-            source={require('@/assets/images/googlelogo2.jpg')} 
+            source={require("@/assets/images/googlelogo2.jpg")} 
             style={styles.socialIcon} 
           />
         </TouchableOpacity>
@@ -82,81 +85,81 @@ export default function SpotifyLoginScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     paddingHorizontal: 25,
   },
   logo: {
     width: 90,
     height: 90,
     marginBottom: 10,
-    resizeMode: 'contain',
+    resizeMode: "contain",
   },
   title: {
     fontSize: 32,
-    color: '#fff',
-    fontWeight: 'bold',
+    color: "#fff",
+    fontWeight: "bold",
     marginBottom: 40,
   },
   input: {
-    width: '100%',
+    width: "100%",
     height: 50,
-    backgroundColor: '#1E1E1E',
+    backgroundColor: "#1E1E1E",
     borderRadius: 30,
     paddingHorizontal: 20,
     fontSize: 16,
-    color: '#fff',
+    color: "#fff",
     marginBottom: 15,
   },
   forgotWrapper: {
-    width: '100%',
-    alignItems: 'flex-end',
+    width: "100%",
+    alignItems: "flex-end",
     marginBottom: 25,
   },
   forgotText: {
-    color: '#888',
+    color: "#888",
     fontSize: 14,
   },
   signInButton: {
-    width: '100%',
+    width: "100%",
     height: 55,
-    backgroundColor: '#1DB954',
+    backgroundColor: "#1DB954",
     borderRadius: 30,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     marginBottom: 25,
-    shadowColor: '#1DB954',
+    shadowColor: "#1DB954",
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.4,
     shadowRadius: 6,
     elevation: 6,
   },
   signInText: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   socialText: {
-    color: '#1DB954', 
+    color: "#1DB954", 
     marginBottom: 15,
     fontSize: 15,
-    fontWeight: '600',
+    fontWeight: "600",
   },
   socialContainer: {
-    flexDirection: 'row',
+    flexDirection: "row",
     gap: 30,
     marginBottom: 30,
   },
   socialIcon: {
     width: 42,
     height: 42,
-    resizeMode: 'contain',
+    resizeMode: "contain",
   },
   signupText: {
-    color: '#888',
+    color: "#888",
   },
   signupLink: {
-    color: '#1DB954',
-    fontWeight: 'bold',
+    color: "#1DB954",
+    fontWeight: "bold",
   },
 });
