@@ -1,15 +1,14 @@
-import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 
 export default function Profile() {
   return (
     <View style={styles.container}>
       <Image
-        source={require("@/assets/images/album1.webp")}
+        source={require("@/assets/images/myself.webp")}
         style={styles.avatar}
       />
-      <Text style={styles.name}>John Doe</Text>
-      <Text style={styles.email}>johndoe@email.com</Text>
+      <Text style={styles.name}>Jose Angelo</Text>
+      <Text style={styles.email}>josepintor2004@gmail.com</Text>
     </View>
   );
 }

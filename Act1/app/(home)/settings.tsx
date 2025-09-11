@@ -1,8 +1,7 @@
-import React from "react";
 import { View, Text, StyleSheet, Switch } from "react-native";
-
+import { useState } from "react";
 export default function Settings() {
-  const [darkMode, setDarkMode] = React.useState(true);
+  const [darkMode, setDarkMode] = useState(true);
 
   return (
     <View style={styles.container}>
