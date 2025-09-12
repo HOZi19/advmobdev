@@ -1,4 +1,12 @@
 # Welcome to your Expo app 👋
+<img width="458" height="992" alt="image" src="https://github.com/user-attachments/assets/3a4f7c2c-cc28-429a-9d45-2099dae692dc" />
+<img width="458" height="992" alt="image" src="https://github.com/user-attachments/assets/4fce8874-af82-4c33-8d93-72ad02a3a68c" />
+<img width="458" height="992" alt="image" src="https://github.com/user-attachments/assets/6d6f54bb-b5ed-4be9-95d4-c22834ffbdec" />
+<img width="458" height="992" alt="image" src="https://github.com/user-attachments/assets/38b6a951-24d1-4540-9f97-fd1c44f38fc2" />
+<img width="458" height="992" alt="image" src="https://github.com/user-attachments/assets/320ea31a-11c3-448c-b779-dc700a267360" />
+<img width="458" height="992" alt="image" src="https://github.com/user-attachments/assets/1360d1e1-b9dc-4574-97c5-3cdc0679c41c" />
+<img width="458" height="992" alt="image" src="https://github.com/user-attachments/assets/f237e059-854b-498c-b02e-6f8336ec3b70" />
+
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
